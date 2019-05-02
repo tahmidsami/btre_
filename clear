@@ -1,0 +1,23 @@
+[33mcommit aac62c1397891bf5bc6b5a76ae45c5b7b0ebdcc7[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Tahmid Sami <mtsami7264@gmail.com>
+Date:   Thu May 2 17:11:48 2019 +0600
+
+    midified urls, views
+
+[33mcommit adf492ce6db970f56abbcd94417bff2681cff882[m
+Author: Tahmid Sami <mtsami7264@gmail.com>
+Date:   Thu May 2 17:02:48 2019 +0600
+
+    Added templates folder
+
+[33mcommit e847d1122907c9c4489db78d066f57b430bd3c8e[m
+Author: Tahmid Sami <mtsami7264@gmail.com>
+Date:   Thu May 2 16:54:28 2019 +0600
+
+    Created pages, urls.py
+
+[33mcommit 2d0c881d275c1268e719e052ab49e91c067d8155[m
+Author: Tahmid Sami <mtsami7264@gmail.com>
+Date:   Thu May 2 00:31:00 2019 +0600
+
+    Initial commit
