@@ -47,7 +47,8 @@
                         <div class="listing-heading text-center">
                             <h4 class="text-primary">{{ listing.title }}</h4>
                             <p>
-                                <i class="fas fa-map-marker text-secondary"></i> {{ listing.address }}, {{ listing.city }}, {{ listing.zipcode }}</p>
+                                <i class="fas fa-map-marker text-secondary"></i> {{ listing.address }},
+                                {{ listing.city }}, {{ listing.zipcode }}</p>
                         </div>
                         <hr>
                         <div class="row py-2 text-secondary">
@@ -69,10 +70,10 @@
                         </div>
                         <div class="row text-secondary pb-2">
                             <div class="col-12">
-                                <i class="fas fa-clock"></i> {{ listing.list_date | timesince }}</div>
+                                <i class="fas fa-clock"></i> {{ listing.list_date | naturaltime }}</div>
                         </div>
                         <hr>
-                        <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
+                        <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
                     </div>
                 </div>
             </div>
@@ -82,28 +83,47 @@
                 <p>No Listings Available</p>
             </div>
             {% endif %}
+        </div>
 
         <div class="row">
             <div class="col-md-12">
+                {% if allListings.has_other_pages %}
                 <ul class="pagination">
+                    {% if allListings.has_previous %}
+                    <li class="page-item">
+                        <a href="?page={{ allListings.previous_page_number }}" class="page-link">&laquo;</a>
+                    </li>
+                    {% else %}
                     <li class="page-item disabled">
-                        <a class="page-link" href="#">&laquo;</a>
+                        <a class="page-link">&laquo;</a>
                     </li>
+                    {% endif %}
+
+                    {% for i in allListings.paginator.page_range %}
+                    {% if allListings.number == i %}
                     <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
+                        <a class="page-link">{{i}}</a>
                     </li>
+                    {% else %}
                     <li class="page-item">
-                        <a class="page-link" href="#">2</a>
+                        <a href="?page={{ i }}" class="page-link">{{i}}</a>
                     </li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if allListings.has_next %}
                     <li class="page-item">
-                        <a class="page-link" href="#">3</a>
+                        <a href="?page={{ allListings.next_page_number }}" class="page-link">&raquo;</a>
                     </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">&raquo;</a>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">&raquo;</a>
                     </li>
+                    {% endif %}
                 </ul>
+                {% endif %}
             </div>
         </div>
-    </div>
+
 </section>
 {% endblock %}
