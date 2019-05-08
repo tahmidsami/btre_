@@ -12,7 +12,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            messages.success(request, 'Login Successfull!')
+            messages.success(request, 'Logged in.')
             return redirect('dashboard')
         else:
             messages.error(request, 'Username or password is incorrect')
@@ -57,6 +57,9 @@ def dashboard(request):
     return render(request, 'accounts/dashboard.html')
 
 def logout(request):
-    return redirect('index')
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request, 'Logged out')
+        return redirect('index')
 
 
